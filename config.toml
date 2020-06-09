@@ -6,6 +6,7 @@ theme = "jeffprod"
 [params]
     twitterUser = "fcastellanos"
     githubUser = "fcastellanos"
+    youtubeUser = "fcastellanos"
 
 [permalinks]
     post = "/:year/:month/:day/:filename"
