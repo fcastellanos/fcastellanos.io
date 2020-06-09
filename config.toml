@@ -2,3 +2,13 @@ baseURL = "http://fcastellanos.io/"
 languageCode = "en-us"
 title = "Fernando's Blog"
 theme = "jeffprod"
+
+[params]
+    twitterUser = "fcastellanos"
+    githubUser = "fcastellanos"
+
+[permalinks]
+    post = "/:year/:month/:day/:filename"
+[taxonomies]
+    tag = "tags"
+    archive = "archives"
