@@ -7,5 +7,10 @@ html,body {
     background-size: cover;
     background-repeat: no-repeat;
     }
+
+.hero.is-info {
+    background-color: #a2a4a6;
+}
+
 .mysocial { color: hsl(0, 0%, 100%);}
 .mysocial:hover { color: hsl(0, 0%, 71%) }
