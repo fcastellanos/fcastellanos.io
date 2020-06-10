@@ -1,4 +1,4 @@
-baseURL = "http://fcastellanos.io/"
+baseURL = "https://fcastellanos.io/"
 languageCode = "en-us"
 title = "Fernando's Blog"
 theme = "jeffprod"
