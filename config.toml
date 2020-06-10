@@ -1,4 +1,4 @@
-baseURL = "https://www.fcastellanos.io/"
+baseURL = "https://fcastellanos.netlify.app/"
 languageCode = "en-us"
 title = "Fernando's Blog"
 theme = "jeffprod"
