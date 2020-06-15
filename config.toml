@@ -3,6 +3,9 @@ languageCode = "en-us"
 title = "Fernando's Blog"
 theme = "jeffprod"
 
+[author]
+    name = "Fernando Castellanos"
+
 [params]
     twitterUser = "fcastellanos"
     githubUser = "fcastellanos"
@@ -18,4 +21,3 @@ theme = "jeffprod"
   changefreq = "monthly"
   priority = 0.5
   filename = "sitemap.xml"
-  
