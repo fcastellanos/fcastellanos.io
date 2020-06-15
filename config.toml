@@ -13,3 +13,9 @@ theme = "jeffprod"
 [taxonomies]
     tag = "tags"
     archive = "archives"
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+  
