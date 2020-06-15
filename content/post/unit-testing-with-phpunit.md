@@ -2,7 +2,7 @@
 title: "Unit Testing with phpunit"
 date: 2020-06-09T19:55:52-07:00
 archives: "2020"
-tags: [php phpunit testing]
+tags: [php, phpunit, testing]
 author: Fernando Castellanos
 draft: true
 ---
@@ -182,5 +182,7 @@ class PersonTest extends TestCase {
 ```
 
 And that's it! it's pretty self-explanatory, `assertNull` asserts that the value that we are evaluating should be `null` and `assertTrue` asserts that the value that we're evaluating should be `true`. With this you should be able to check the read the docs and be able to combile these and new assertions to make sure that your code is as bug free as possible.
+
+If you have any comments or questions feel free to reach out on twitter at [@fcastellanos](https://twitter.com/fcastellanos).
 
 Happy Coding!
