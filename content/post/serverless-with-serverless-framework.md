@@ -2,9 +2,9 @@
 title: "Serverless With Serverless Framework"
 date: 2020-06-15T18:26:41-07:00
 archives: "2020"
-tags: []
+tags: [serverless, api, aws, python, cloud]
 author: Fernando Castellanos
-draft: true
+draft: false
 ---
 
 In this post I'm going to talk about serverless API's and services, rather than trying come up with my own description about what serverless computing is here's how Wikipedia defines it.
@@ -102,7 +102,7 @@ As you can guess you should be able to pass in a different template to use a dif
 you can see a full list if you type
 
 ```
-serverless create --help
+sls create --help
 ```
 
 Now cd into our recently created project and see what files were generated...
@@ -129,3 +129,59 @@ functions:
 **service** is the name of your service, **provider** is where you configure your cloud provider and the runtime of your code, after that you see the **functions** section where you define a list of functions that your service will have, the high level keys of the **functions** collection will be the name of the functions in this case we only have one named **hello** and under that you define the **handler** which is the file name without the extension followed by a dot and then the function name to execute, in this case we have a file named `handler.py` and inside the file we have a function named `hello` that will get executed when this serverless function gets triggered.
 
 This is the most basic that you can get when creating a serverless service with the serverless framework, now if your AWS credentials were properly configured we can go ahead and deploy our app!
+
+Now in order to deploy our app we go back to the terminal and just type
+
+```
+sls deploy
+```
+
+If everything's properly configured you should see something like this...
+
+```
+Serverless: Packaging service...
+Serverless: Excluding development dependencies...
+Serverless: Creating Stack...
+Serverless: Checking Stack create progress...
+........
+Serverless: Stack create finished...
+Serverless: Uploading CloudFormation file to S3...
+Serverless: Uploading artifacts...
+Serverless: Uploading service myservice.zip file to S3 (34.67 MB)...
+```
+
+And if you make and update and deploy again you should see something like this
+
+```
+Serverless: Packaging service...
+Serverless: Excluding development dependencies...
+Serverless: Uploading CloudFormation file to S3...
+Serverless: Uploading artifacts...
+Serverless: Uploading service myservice.zip file to S3 (34.67 MB)...
+Serverless: Validating template...
+Serverless: Updating Stack...
+Serverless: Checking Stack update progress...
+...............
+Serverless: Stack update finished...
+Service Information
+service: myservice
+stage: dev
+region: us-east-1
+stack: myservice-dev
+resources: 6
+api keys:
+  None
+endpoints:
+  None
+functions:
+  hello: myservice-dev-hello
+layers:
+  None
+  ```
+
+That's it! we just deployed a simple but nonetheless a serverless service, there are some things to consider here that we're going to address in next blog posts like for example this is just one lambda function in the AWS stack, there is no API endpoint to run our function, also the deployed artifact is 34.67 MB which is kind of big for a simple function among other topics that I'm going to talk about, anyways this is a good start.
+
+If you have any comments or questions feel free to reach out on twitter at [@fcastellanos](https://twitter.com/fcastellanos).
+
+Happy Coding!
+
