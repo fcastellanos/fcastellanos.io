@@ -4,7 +4,7 @@ date: 2020-06-09T19:55:52-07:00
 archives: "2020"
 tags: [php, phpunit, testing]
 author: Fernando Castellanos
-draft: true
+draft: false
 ---
 
 In this post I'm going to explain and walk you through how to write unit tests with PHP using phpunit.
