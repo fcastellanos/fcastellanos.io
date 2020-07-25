@@ -15,10 +15,10 @@ While it's called serverless that doesn't mean that there is no server running y
 
 This is a game changer and gives the developer more power to build and deploy services quickly without having to depend on an IT person to do that for you and on top manage the scalability.
 
-While all of this is great this is no silver bullet for bulding web services and it comes with its disadvantages, I'll try to enumerate a few of them here.
+While all of this is great this is no silver bullet for building web services and it comes with its disadvantages, I'll try to enumerate a few of them here.
 
 * Having a virtually limitless scaling capabilities can be a double edge sword costwise if you don't have proper mechanisms in place.
-* Serverless can also mean that there is no server whatsoever if you don't have any traffic, meaning there could be no container provisioned to run your code, while that is good because you're not incurring any cost, there will be a penalty whenever you get traffic because you'll encounter a "cold start" meaning that your code needs to be privisioned to a container and you have to wait to get a response, this might not be good for mission critical services.
+* Serverless can also mean that there is no server whatsoever if you don't have any traffic, meaning there could be no container provisioned to run your code, while that is good because you're not incurring any cost, there will be a penalty whenever you get traffic because you'll encounter a "cold start" meaning that your code needs to be provisioned to a container and you have to wait to get a response, this might not be good for mission critical services.
 * If your service handles large amounts of requests like a log processor service, ad service, etc, serverless might not be the best choice costwise.
 * Setting up a good local dev environment can be difficult because there's no service to manage along with a local DB if your service uses one.
 * Testing in general (unit test, integration or manual) can also be tricky to simulate a serverless environment.
@@ -27,13 +27,13 @@ While all of this is great this is no silver bullet for bulding web services and
 Now while all of those cons are valid, there are some things that you can do to mitigate them and make them acceptable:
 
 * As for the possible cost issues associated with high traffic first of all I'll say that this is a good issue to have, but still you can manage that a bit with caching mechanisms at the request level if you're dealing with a serverless API, or while retrieving some sort of response.
-* For the "cold start" there are some mechanisms to keep at least one container runnig at all times to avoid the cold start, while this defeats the purpose for being completely serverless this is an acceptable technique, you get all of the other advantages and it's still cost effective.
+* For the "cold start" there are some mechanisms to keep at least one container running at all times to avoid the cold start, while this defeats the purpose for being completely serverless this is an acceptable technique, you get all of the other advantages and it's still cost effective.
 * For a high traffic service this one's a bit harder to prove, but being serverless doesn't mean that your whole service needs to be serverless, you can have a section of the service to just handle the http requests in a serverless fashion, queue or log whatever needs to be queued or logged and delegate it to another service (serverless or not). This is the magic of cloud computing, that you can build your service with whatever service you have at your disposal that fits your needs.
 * There's several tools and techniques that can help you get around this barrier, there are tools that help you mimic services like S3, DynamoDB, Kinesis, Firehose, etc in your local environment, another option that you have is that most serverless tools allows you to have different environments in the cloud, so you could have an environment for development, staging, production, etc, while this might not be super cost effective this means that you have basically the same environment as in production.
 * As for testing it's always a good practice serverless or not to have a clear separation of concerns in your code, this is super beneficial when unit testing your serverless code because you can and should focus on testing your business logic and not serverless and its interactions. I'll create a following blog post to show you how you achieve that.
 * Lastly there's no best way to learn than just jumping in and learn to swim.
 
-Enough words, let's just jump in and learn about serverless, there are several tools that help you build and deploy severless service but my tool of choice is [serverless framework](https://www.serverless.com) as per their description
+Enough words, let's just jump in and learn about serverless, there are several tools that help you build and deploy serverless service but my tool of choice is [serverless framework](https://www.serverless.com) as per their description
 
 >Develop, deploy, troubleshoot and secure your serverless applications with radically less overhead and cost by using the Serverless Framework. The Serverless Framework consists of an open source CLI and a hosted dashboard. Together, they provide you with full serverless application lifecycle management.
 
@@ -84,7 +84,7 @@ Serverless: Generating boilerplate in "/Users/fcastellanos/Projects/serverless/m
 Serverless: Successfully generated boilerplate for template: "aws-python3"
 ```
 
-First thing to notice is that we can either use the `serverless` command or `sls` for short, secondly we pass in a template that we want to use, in this case we're using `aws-python3` meaning that we want to deploy to AWS and use Pythonn 3.x as our language, lastly we pass in a path as the name of the project and folder.
+First thing to notice is that we can either use the `serverless` command or `sls` for short, secondly we pass in a template that we want to use, in this case we're using `aws-python3` meaning that we want to deploy to AWS and use Python 3.x as our language, lastly we pass in a path as the name of the project and folder.
 
 As you can guess you should be able to pass in a different template to use a different cloud provider and language, these are some of the most popular ones:
 
