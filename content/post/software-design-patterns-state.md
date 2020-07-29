@@ -4,7 +4,7 @@ date: 2020-07-25T14:30:16-07:00
 archives: "2020"
 tags: [design patterns, software patterns, best practices, state]
 author: Fernando Castellanos
-draft: true
+draft: false
 ---
 
 This is the fourth part of the Software Design Patterns blog post series, in this post I'm going to talk about the State Pattern or the State Machine Pattern, which is a pattern that defines a way to transition between the state of a process and allows you to define the rules of the transition.
