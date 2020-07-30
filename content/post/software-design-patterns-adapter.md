@@ -4,7 +4,7 @@ date: 2020-07-25T18:05:12-07:00
 archives: "2020"
 tags: [design patterns, software patterns, best practices, adapter]
 author: Fernando Castellanos
-draft: true
+draft: false
 ---
 
 In this fifth part of the Software Design Patterns blog series I'll talk about a pattern that probably most of us have heard of or even used before but that we haven't had the opportunity to build, I'm talking about the Adapter Pattern.
