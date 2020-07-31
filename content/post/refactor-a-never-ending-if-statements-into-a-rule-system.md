@@ -4,7 +4,7 @@ date: 2020-07-26T13:31:27-07:00
 archives: "2020"
 tags: []
 author: Fernando Castellanos
-draft: true
+draft: false
 ---
 
 This comes from a personal experience while working on a big refactor of an Ad Server, in an ad serving system you have creatives, campaigns, ad units, templates, etc. On the client side, meaning the website that will server the Ad it serves the creative code that will ultimately calls the Ad Server requesting an Ad by sending the Creative ID, along with the client information coming from the HTTP request. What can be really messy and complicated is that whenever you request an Ad to an Ad Server is that the request goes through what some call a Campaign and a Creative auction to determine which Ad to serve, these auctions checks for a matching campaign meaning that you cannot serve any Ad to any request, it needs to match certain campaigns requirements and after matching a campaign it needs to match a creative requirements, the amount of requirements can vary or each of them. 
