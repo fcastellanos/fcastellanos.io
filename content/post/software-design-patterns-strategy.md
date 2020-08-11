@@ -1,5 +1,5 @@
 ---
-title: "Software Design Patterns Strategy"
+title: "Software Design Patterns (Strategy)"
 date: 2020-08-03T11:23:23-07:00
 archives: "2020"
 tags: [design patterns, software patterns, best practices, strategy, python, software development]
