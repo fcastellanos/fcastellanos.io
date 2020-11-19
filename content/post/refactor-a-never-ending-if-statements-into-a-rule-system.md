@@ -2,7 +2,7 @@
 title: "Refactor a Never Ending 'if' Statements Into a Rule System"
 date: 2020-07-26T13:31:27-07:00
 archives: "2020"
-tags: []
+tags: [php, patterns, best-practices]
 author: Fernando Castellanos
 draft: false
 ---
