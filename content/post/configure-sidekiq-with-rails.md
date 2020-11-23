@@ -1,6 +1,6 @@
 ---
 title: "Configure Sidekiq With Rails"
-date: 2020-11-19T19:01:47-08:00
+date: 2020-11-23T11:29:47-08:00
 archives: "2020"
 tags: [ruby, background-jobs, redis]
 author: Fernando Castellanos
