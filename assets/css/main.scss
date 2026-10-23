@@ -1,0 +1,71 @@
+---
+---
+:root {
+  --bg: #ffffff;
+  --fg: #1f2328;
+  --muted: #656d76;
+  --accent: #0b6bcb;
+  --border: #d8dee4;
+  --code-bg: #f6f8fa;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --fg: #e6edf3;
+    --muted: #8d96a0;
+    --accent: #4da3ff;
+    --border: #30363d;
+    --code-bg: #161b22;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.wrap { max-width: 46rem; margin: 0 auto; padding: 0 1rem; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; }
+
+.site-header { border-bottom: 1px solid var(--border); padding: 1rem 0; margin-bottom: 2rem; }
+.site-header .wrap { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; align-items: baseline; justify-content: space-between; }
+.site-title { font-weight: 700; font-size: 1.2rem; color: var(--fg); }
+.site-header nav a { margin-left: 1rem; color: var(--muted); }
+.site-header nav a:first-child { margin-left: 0; }
+.site-footer { border-top: 1px solid var(--border); margin-top: 4rem; padding: 1.5rem 0; color: var(--muted); font-size: .9rem; }
+
+.intro { color: var(--muted); }
+.post-list { list-style: none; padding: 0; }
+.post-list li { display: flex; gap: 1rem; padding: .35rem 0; }
+.post-list time { color: var(--muted); min-width: 7.5rem; font-variant-numeric: tabular-nums; }
+@media (max-width: 520px) { .post-list li { flex-direction: column; gap: 0; padding: .5rem 0; } }
+
+.post h1 { line-height: 1.25; margin-bottom: .25rem; }
+.meta, .tags { color: var(--muted); margin: .25rem 0; font-size: .95rem; }
+.tags a, .tag-cloud a { margin-right: .5rem; }
+.post-nav { display: flex; justify-content: space-between; gap: 1rem; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+
+blockquote { margin: 1rem 0; padding: 0 1rem; border-left: 4px solid var(--border); color: var(--muted); }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .88em; background: var(--code-bg); padding: .15em .35em; border-radius: 4px; }
+pre { background: var(--code-bg); padding: 1rem; overflow-x: auto; border-radius: 6px; border: 1px solid var(--border); line-height: 1.45; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; }
+th, td { border: 1px solid var(--border); padding: .4rem .7rem; }
+
+/* Rouge syntax highlighting (GitHub-ish, works in both themes) */
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .cs { color: var(--muted); font-style: italic; }
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kr, .highlight .kt { color: #cf222e; }
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sr, .highlight .ss { color: #0a7f3f; }
+.highlight .m, .highlight .mi, .highlight .mf { color: #0550ae; }
+.highlight .nf, .highlight .nc { color: #8250df; }
+@media (prefers-color-scheme: dark) {
+  .highlight .k, .highlight .kd, .highlight .kn, .highlight .kr, .highlight .kt { color: #ff7b72; }
+  .highlight .s, .highlight .s1, .highlight .s2, .highlight .sr, .highlight .ss { color: #7ee787; }
+  .highlight .m, .highlight .mi, .highlight .mf { color: #79c0ff; }
+  .highlight .nf, .highlight .nc { color: #d2a8ff; }
+}
