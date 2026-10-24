@@ -41,5 +41,4 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
-  - .github
   - netlify.toml

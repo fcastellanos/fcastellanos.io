@@ -10,9 +10,9 @@ layout: default
       · {{ words | divided_by: 200 | plus: 1 }} min read
     </p>
     {% if page.tags.size > 0 %}
-    <p class="tags">
-      {% for tag in page.tags %}<a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">#{{ tag }}</a> {% endfor %}
-    </p>
+    <div class="pills">
+      {% for tag in page.tags %}<a class="pill pill-link" href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>{% endfor %}
+    </div>
     {% endif %}
   </header>
   {{ content }}

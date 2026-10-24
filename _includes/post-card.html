@@ -1,0 +1,18 @@
+{% assign post = include.post %}
+{% assign words = post.content | number_of_words %}
+{% assign excerpt_words = include.words | default: 28 %}
+<article class="card{% if include.featured %} card-featured{% endif %}">
+  <a class="card-link" href="{{ post.url | relative_url }}" aria-label="{{ post.title | escape }}"></a>
+  {% if include.featured %}<span class="eyebrow">Latest post</span>{% endif %}
+  <h3>{{ post.title }}</h3>
+  <p class="excerpt">{{ post.excerpt | strip_html | normalize_whitespace | truncatewords: excerpt_words }}</p>
+  <div class="card-meta">
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %-d, %Y' }}</time>
+    <span>· {{ words | divided_by: 200 | plus: 1 }} min read</span>
+  </div>
+  {% if post.tags.size > 0 %}
+  <div class="pills">
+    {% for tag in post.tags limit: 3 %}<span class="pill">{{ tag }}</span>{% endfor %}
+  </div>
+  {% endif %}
+</article>

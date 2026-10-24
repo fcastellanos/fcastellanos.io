@@ -5,27 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% seo %}
   {% feed_meta %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 </head>
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <a class="site-title" href="{{ '/' | relative_url }}">
+        <span class="logo" aria-hidden="true">FC</span>
+        <span>{{ site.author.name }}</span>
+      </a>
       <nav>
         <a href="{{ '/archive/' | relative_url }}">Archive</a>
-        <a href="{{ '/tags/' | relative_url }}">Tags</a>
+        <a href="{{ '/tags/' | relative_url }}">Topics</a>
         <a href="{{ '/about/' | relative_url }}">About</a>
-        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
       </nav>
     </div>
   </header>
-  <main class="wrap">
+  <main class="wrap {{ page.main_class | default: 'narrow' }}">
     {{ content }}
   </main>
   <footer class="site-footer">
     <div class="wrap">
-      &copy; {{ 'now' | date: '%Y' }} {{ site.author.name }} ·
-      <a href="https://github.com/{{ site.author.github }}">GitHub</a>
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ site.author.name }}</span>
+      <span class="footer-links">
+        <a href="https://github.com/{{ site.author.github }}">GitHub</a>
+        <a href="https://twitter.com/{{ site.author.twitter }}">X / Twitter</a>
+        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      </span>
     </div>
   </footer>
 </body>
