@@ -1,0 +1,45 @@
+title: Fernando's Blog
+description: Notes on software engineering, Ruby, Rails, testing, mobile and whatever I'm building lately.
+url: "https://fcastellanos.io"
+baseurl: ""
+lang: en
+timezone: America/Los_Angeles
+
+author:
+  name: Fernando Castellanos
+  github: fcastellanos
+  twitter: fcastellanos
+
+# Keeps the same URLs the old Hugo site used: /2020/11/23/configure-sidekiq-with-rails/
+permalink: /:year/:month/:day/:title/
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: Fernando Castellanos
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github
+  - netlify.toml
