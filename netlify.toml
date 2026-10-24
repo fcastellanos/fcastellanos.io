@@ -1,0 +1,10 @@
+# Netlify still builds deploy previews for this repo. Production now deploys
+# through GitHub Pages (.github/workflows/pages.yml); this file only keeps the
+# Netlify builds working until that integration is disconnected.
+[build]
+publish = "_site"
+command = "bundle exec jekyll build"
+
+[build.environment]
+RUBY_VERSION = "3.3.6"
+JEKYLL_ENV = "production"
