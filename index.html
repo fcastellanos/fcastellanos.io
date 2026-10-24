@@ -1,8 +1,37 @@
 ---
 layout: default
+main_class: wide
 ---
-<section class="intro">
-  <p>{{ site.description }}</p>
+<section class="hero">
+  <img class="avatar" src="https://github.com/{{ site.author.github }}.png?size=240" alt="{{ site.author.name }}" width="112" height="112">
+  <div>
+    <p class="eyebrow">Software engineer</p>
+    <h1>Hi, I'm Fernando.</h1>
+    <p class="lede">I build web and mobile products with Ruby on Rails and React Native, and I write about testing, design patterns, and how AI is changing the way I ship software.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#posts">Read the blog</a>
+      <a class="btn" href="https://github.com/{{ site.author.github }}">GitHub</a>
+      <a class="btn" href="{{ '/about/' | relative_url }}">About me</a>
+    </div>
+  </div>
 </section>
-<h2>Recent posts</h2>
-{% include post-list.html posts=site.posts %}
+
+{% assign tags = site.tags | sort %}
+<section class="topics" aria-label="Topics">
+  {% for tag in tags %}{% if tag[1].size > 1 %}<a class="pill pill-link" href="{{ '/tags/' | relative_url }}#{{ tag[0] | slugify }}">{{ tag[0] }} <small>{{ tag[1].size }}</small></a>{% endif %}{% endfor %}
+</section>
+
+<section id="posts">
+  {% assign latest = site.posts.first %}
+  {% include post-card.html post=latest featured=true words=60 %}
+
+  <div class="section-head">
+    <h2>More posts</h2>
+    <a href="{{ '/archive/' | relative_url }}">View all →</a>
+  </div>
+  <div class="grid">
+    {% for post in site.posts offset: 1 limit: 8 %}
+      {% include post-card.html post=post %}
+    {% endfor %}
+  </div>
+</section>
