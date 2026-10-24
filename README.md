@@ -1,6 +1,6 @@
 # fcastellanos.io
 
-Fernando Castellanos' blog, built with [Jekyll](https://jekyllrb.com) and deployed to GitHub Pages by `.github/workflows/pages.yml` on every push to `master`.
+Fernando Castellanos' blog, built with [Jekyll](https://jekyllrb.com) and deployed by Netlify on every push to `master` (build settings in `netlify.toml`). Pull requests get a Netlify deploy preview.
 
 ## Writing a post
 
@@ -26,9 +26,3 @@ bundle exec jekyll serve --drafts
 ```
 
 Then open http://localhost:4000.
-
-## One-time GitHub setup
-
-1. Settings → Pages → Build and deployment → Source: **GitHub Actions**.
-2. Settings → Pages → Custom domain: `fcastellanos.io`, and point DNS at GitHub Pages
-   (apex `A` records 185.199.108.153, .109.153, .110.153, .111.153; `www` `CNAME` to `fcastellanos.github.io`).
