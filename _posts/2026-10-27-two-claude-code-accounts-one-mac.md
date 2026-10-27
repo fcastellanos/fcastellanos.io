@@ -81,7 +81,7 @@ Use the full path. `~` isn't expanded in a plist. Then a few things that cost me
 - **Expect to log in again.** After the move, Claude Code asked me to sign in even though the files were the same. The saved login is tied to the config path, and the path had changed.
 - **It's one account for the whole app.** Because the panel reads the app's environment, every VS Code window gets the same account. You can't switch the panel per project with a setting.
 
-For that last one, I use the terminal: `claude-personal` in my side project's integrated terminal, and the panel for work. The other option is a second VS Code install (such as VS Code Insiders) launched with the personal folder, so each app has its own account. I haven't needed it yet.
+That last one was a deal-breaker for me, since the panel is how I work. I'll come back to it after the second surprise.
 
 ## Surprise #2: the login used the wrong account anyway
 
@@ -97,11 +97,27 @@ The fix:
 
 After that, it showed my personal account.
 
+## The final piece: one VS Code per account
+
+The terminal was sorted, but I still wanted the VS Code panel, not just a terminal, on my personal account for my side project. Since the panel takes its account from the environment VS Code was launched with, the answer is to launch VS Code with the right environment, as its own separate instance.
+
+That second part matters. If VS Code is already running, `code` from a terminal just opens a new window in the existing app, which keeps its original environment. Giving each account its own `--user-data-dir` makes VS Code start a fully separate instance that reads the environment it was launched with:
+
+```bash
+# ~/.zshrc
+alias code-work='CLAUDE_CONFIG_DIR="$HOME/.claude-work" code --user-data-dir "$HOME/.vscode-work"'
+alias code-personal='CLAUDE_CONFIG_DIR="$HOME/.claude-personal" code --user-data-dir "$HOME/.vscode-personal"'
+```
+
+Now `code-personal <side-project-folder>` opens my side project in a VS Code whose Claude panel is signed in to my personal account, and `code-work` does the same for work. Both can be open at the same time. Each instance keeps its own settings and extensions state, so work and personal stay apart in VS Code too.
+
 ## The setup now
 
 | Where I run Claude Code | Account | How |
 | --- | --- | --- |
-| VS Code panel | Work | `launchctl setenv` from a LaunchAgent |
+| VS Code panel (opened from the Dock) | Work | `launchctl setenv` from a LaunchAgent |
+| VS Code panel via `code-work` | Work | alias with its own `--user-data-dir` |
+| VS Code panel via `code-personal` | Personal | alias with its own `--user-data-dir` |
 | `claude` in any terminal | Work | `CLAUDE_CONFIG_DIR` in `~/.zshenv` |
 | `claude-personal` in any terminal | Personal | alias that overrides `CLAUDE_CONFIG_DIR` |
 
@@ -111,7 +127,7 @@ After that, it showed my personal account.
 
 **Separate by config folder.** `CLAUDE_CONFIG_DIR` keeps settings, history, and login apart in one move.
 
-**GUI apps don't read your shell config.** If the VS Code panel matters, set the variable with `launchctl` and fully restart the app.
+**GUI apps don't read your shell config.** If the VS Code panel matters, set the variable with `launchctl`, or launch a separate VS Code instance per account with its own `--user-data-dir`.
 
 **Log in from a clean browser.** If your browser is signed in to the other account, the login can quietly use it.
 
