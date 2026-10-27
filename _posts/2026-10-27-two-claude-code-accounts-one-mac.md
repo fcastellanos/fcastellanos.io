@@ -101,15 +101,17 @@ After that, it showed my personal account.
 
 The terminal was sorted, but I still wanted the VS Code panel, not just a terminal, on my personal account for my side project. Since the panel takes its account from the environment VS Code was launched with, the answer is to launch VS Code with the right environment, as its own separate instance.
 
-That second part matters. If VS Code is already running, `code` from a terminal just opens a new window in the existing app, which keeps its original environment. Giving each account its own `--user-data-dir` makes VS Code start a fully separate instance that reads the environment it was launched with:
+That second part matters. If VS Code is already running, `code` from a terminal just opens a new window in the existing app, and that window keeps the app's original environment. Giving an alias its own `--user-data-dir` makes VS Code start a fully separate instance that reads the environment it was launched with. Here are my two aliases:
 
 ```bash
 # ~/.zshrc
-alias code-work='CLAUDE_CONFIG_DIR="$HOME/.claude-work" code --user-data-dir "$HOME/.vscode-work"'
-alias code-personal='CLAUDE_CONFIG_DIR="$HOME/.claude-personal" code --user-data-dir "$HOME/.vscode-personal"'
+alias code-work='CLAUDE_CONFIG_DIR=~/.claude-work code --user-data-dir ~/.vscode-work'
+alias code-personal='CLAUDE_CONFIG_DIR=~/.claude-personal code'
 ```
 
-Now `code-personal <side-project-folder>` opens my side project in a VS Code whose Claude panel is signed in to my personal account, and `code-work` does the same for work. Both can be open at the same time. Each instance keeps its own settings and extensions state, so work and personal stay apart in VS Code too.
+`code-work` always gets its own instance, with its own settings and extensions in `~/.vscode-work`. `code-personal` uses my regular VS Code, with the personal config folder. So `code-personal <side-project-folder>` opens my side project with the Claude panel signed in to my personal account, and `code-work` opens a separate VS Code for work. Both can be open at the same time.
+
+There's one catch with this split. Because `code-personal` uses the regular VS Code, it only gets the personal account if it's the one that starts that instance. If the regular VS Code is already running, for example opened from the Dock with the work default from the LaunchAgent, `code-personal` just adds a window to it, and that window stays on work. I start my personal VS Code with `code-personal` and use `code-work` for work. If you'd rather not think about it, give both aliases their own `--user-data-dir`.
 
 ## The setup now
 
@@ -117,7 +119,7 @@ Now `code-personal <side-project-folder>` opens my side project in a VS Code who
 | --- | --- | --- |
 | VS Code panel (opened from the Dock) | Work | `launchctl setenv` from a LaunchAgent |
 | VS Code panel via `code-work` | Work | alias with its own `--user-data-dir` |
-| VS Code panel via `code-personal` | Personal | alias with its own `--user-data-dir` |
+| VS Code panel via `code-personal` | Personal | alias that sets `CLAUDE_CONFIG_DIR` when it starts my regular VS Code |
 | `claude` in any terminal | Work | `CLAUDE_CONFIG_DIR` in `~/.zshenv` |
 | `claude-personal` in any terminal | Personal | alias that overrides `CLAUDE_CONFIG_DIR` |
 
@@ -127,7 +129,7 @@ Now `code-personal <side-project-folder>` opens my side project in a VS Code who
 
 **Separate by config folder.** `CLAUDE_CONFIG_DIR` keeps settings, history, and login apart in one move.
 
-**GUI apps don't read your shell config.** If the VS Code panel matters, set the variable with `launchctl`, or launch a separate VS Code instance per account with its own `--user-data-dir`.
+**GUI apps don't read your shell config.** If the VS Code panel matters, set the variable with `launchctl`, or launch VS Code from an alias that sets it, with a separate `--user-data-dir` so it starts its own instance.
 
 **Log in from a clean browser.** If your browser is signed in to the other account, the login can quietly use it.
 
