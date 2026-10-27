@@ -10,7 +10,7 @@ In [the last post](/2026/10/24/from-prompts-to-skills/) I explained how my ticke
 
 ## I'm the only reviewer
 
-I build a school administration platform on my own: a Rails backend and a React Native app. There's no team and no second pair of eyes. Claude Code writes most of the code, and I'm the only person between a PR and production.
+I build a school administration platform on my own, as a side project outside my day job: a Rails backend and a React Native app. There's no team and no second pair of eyes. Claude Code writes most of the code, and I'm the only person between a PR and production.
 
 That changes what reviewing means. I'm not checking a colleague's style. I'm checking whether the change does what the ticket asked, whether it does anything the ticket didn't ask for, and whether I understand it well enough to own it at 2 a.m.
 
