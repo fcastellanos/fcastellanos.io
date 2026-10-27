@@ -4,11 +4,11 @@ date: 2026-10-27T10:00:00-07:00
 tags: [ai, claude-code, macos, vscode]
 ---
 
-I use Claude Code for two things: my day job, on my employer's team plan, and a school administration platform I build as a side project, on my own personal plan. They run on the same Mac. One day I asked Claude a simple question in my side project, "what Claude account am I using?", and the answer was my work account. Here's how I separated the two, and the two surprises along the way.
+I use Claude Code for two things: my day job, on my employer's team plan, and a school administration platform I build as a side project, on my own personal plan. They run on the same Mac, and for both, my main way of using Claude when I code is the Claude Code extension in VS Code. One day I asked Claude a simple question in my side project, "what Claude account am I using?", and the answer was my work account. Here's how I separated the two, and the two surprises along the way.
 
 ## Why it matters
 
-Keeping them apart isn't just tidiness. Work usage should go to the work plan, and personal usage to mine. My side project's code and conversations shouldn't end up in my employer's workspace, and the reverse matters even more. I'd assumed they were separate because the Claude desktop app showed my personal account. Claude Code didn't agree.
+Keeping them apart isn't just tidiness. I didn't want anything from my personal project, its code, conversations, or the artifacts Claude creates along the way, sitting in my employer's Claude account. The reverse matters even more: work shouldn't leak into my personal account. And work usage should be billed to the work plan, personal usage to mine. I'd assumed they were separate because the Claude desktop app showed my personal account. Claude Code didn't agree.
 
 ## First, find out which account you're actually using
 
@@ -47,7 +47,7 @@ The terminal was easy. VS Code wasn't.
 
 ## Surprise #1: the VS Code panel ignores your shell
 
-I mostly use Claude Code through the VS Code extension panel, not a terminal. The extension doesn't read `~/.zshenv` or `~/.zshrc`. It inherits its environment from the VS Code app itself, at the moment the app launches.
+As I said, VS Code is where I use Claude Code most, through the extension panel rather than a terminal. The extension doesn't read `~/.zshenv` or `~/.zshrc`. It inherits its environment from the VS Code app itself, at the moment the app launches.
 
 That rules out a few fixes you'll find online. Setting `CLAUDE_CONFIG_DIR` under `terminal.integrated.env.osx` in a workspace's `.vscode/settings.json` looks like it should work, and it does, for the integrated terminal. New terminal tabs in that workspace get the variable, so typing `claude` there uses the right folder. The extension panel never reads that setting, no matter how many times you restart.
 
