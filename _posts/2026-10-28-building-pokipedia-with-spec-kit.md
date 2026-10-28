@@ -10,6 +10,9 @@ My earlier posts in this series were about a long-running project, with a board,
 
 Pokipedia is a searchable directory of every Pokémon in Pokopia. It has profile pages with their in-game details and where to find them, an interactive map, and accounts for tracking the Pokémon you've discovered. It's built with [Loco](https://loco.rs), a Rails-like framework for Rust, with server-rendered templates and PostgreSQL. Every page works without JavaScript, and it ships as a single Docker container.
 
+![The Pokipedia directory page in the light "Cozy Rural" theme](/assets/img/posts/pokipedia/directory.png)
+*The directory in the light "Cozy Rural" theme. The eggs are placeholders until the artwork is downloaded.*
+
 ## Spec Kit in one paragraph
 
 Spec Kit turns "build me X" into a sequence of documents, each one a slash command. A **constitution** holds the project's rules. Then, for each feature: `/speckit-specify` writes the spec (user stories, requirements, success criteria), `/speckit-clarify` asks questions about anything ambiguous, `/speckit-plan` writes the technical plan, research and data model, `/speckit-tasks` breaks it into numbered tasks, and `/speckit-analyze` checks all of them against each other and against the constitution. Only then does implementation start.
@@ -69,9 +72,15 @@ The third feature is the one I'm proudest of. Every habitat page needed a pictur
 
 So the site draws its own. Each habitat gets an original illustration, rendered as SVG when the page loads, built entirely from the habitat's list of required items. A grassy meadow if the list has tall grass, a kitchen if it has a cooking stove, a warmer tint if it has food. The picture is our drawing *of the listed items*, not a copy of the game.
 
+![The Habitat Dex with a small scene illustration next to each habitat](/assets/img/posts/pokipedia/habitat-dex.png)
+*The Habitat Dex. Each thumbnail is drawn from that habitat's build list: tall grass alone, then tall grass with a tree.*
+
 Before writing the spec, there was a research round, and the numbers mattered. The obvious approach, one picture per main item, gave only **145 distinct scenes for 254 habitats**, with up to 12 habitats sharing the same picture. The final design, a terrain plus the *rarest* item as the main subject plus supporting items and modifiers, gave **253 distinct scenes out of 254**.
 
 Picking the rarest item was the key idea. The build lists are full of generic furniture (a seat appears in 23 lists, a table in 20), so "draw the first item" would draw a table for every café. "Draw the rarest item" draws the pizza.
+
+![A grid of scene thumbnails for fossil displays and café habitats, in light and dark themes, before and after enlarging the main subject](/assets/img/posts/pokipedia/scenes-before-after.png)
+*Fossil displays and café habitats share the same furniture, so the subject does the work: a skull or a sail on the pedestal, tea, pizza or fries on the table. Each scene is shown before and after the subject was drawn bigger, in both themes.*
 
 And the one remaining collision? Two habitats, "Pretty flower bed" and "Hydrated flower bed," had byte-identical build lists in the data. That looked wrong, so I checked in the game: the hydrated one also needs Water ×2. Fixing the data made all 254 scenes distinct.
 
