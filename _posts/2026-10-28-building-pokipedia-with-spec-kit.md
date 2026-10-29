@@ -10,8 +10,8 @@ My earlier posts in this series were about a long-running project, with a board,
 
 Pokipedia is a searchable directory of every Pokémon in Pokopia. It has profile pages with their in-game details and where to find them, an interactive map, and accounts for tracking the Pokémon you've discovered. It's built with [Loco](https://loco.rs), a Rails-like framework for Rust, with server-rendered templates and PostgreSQL. Every page works without JavaScript, and it ships as a single Docker container.
 
-![The Pokipedia directory page in the light "Cozy Rural" theme](/assets/img/posts/pokipedia/directory.png)
-*The directory in the light "Cozy Rural" theme. The eggs are placeholders until the artwork is downloaded.*
+![The Pokipedia directory: tiles for Bulbasaur through Pidgeot, each with its types, specialties and number of areas](/assets/img/posts/pokipedia/directory.png)
+*The directory in the light "Cozy Rural" theme. Each tile shows the Pokémon's types, its specialties and how many areas it appears in.*
 
 ## Spec Kit in one paragraph
 
@@ -52,6 +52,9 @@ feat: discovery tracking with live progress bars (US6)
 
 The pull request was merged at 9:13 that night. That's not because the agent is fast at typing. It's because every decision had been made in the documents first, so implementation was mostly executing a plan that had already been checked.
 
+![Pikachu's profile page: its art, Pokopia stats, specialties, favorite things, and where to find it](/assets/img/posts/pokipedia/profile.png)
+*A profile page from user story 2. "Where to find" lists the habitat that attracts it, with the areas, rarity, time of day and weather.*
+
 ![The Pokopia map: rounded areas like Palette Town, Rocky Ridges and Bubbly Basin, with a list of areas beside it](/assets/img/posts/pokipedia/map.png)
 *The interactive map from user story 4. Picking an area shows which Pokémon can appear there and what attracts them.*
 
@@ -77,6 +80,9 @@ So the site draws its own. Each habitat gets an original illustration, rendered 
 
 ![The Habitat Dex with a small scene illustration next to each habitat](/assets/img/posts/pokipedia/habitat-dex.png)
 *The Habitat Dex. Each thumbnail is drawn from that habitat's build list: tall grass alone, then tall grass with a tree.*
+
+![The Tall Grass habitat page: a drawn scene of grass on a hill, the build list, and the Pokémon that show up](/assets/img/posts/pokipedia/habitat.png)
+*A habitat page. The scene at the top is drawn by the site from "Tall Grass ×4". The Pokémon below it are the ones that habitat attracts.*
 
 Before writing the spec, there was a research round, and the numbers mattered. The obvious approach, one picture per main item, gave only **145 distinct scenes for 254 habitats**, with up to 12 habitats sharing the same picture. The final design, a terrain plus the *rarest* item as the main subject plus supporting items and modifiers, gave **253 distinct scenes out of 254**.
 
