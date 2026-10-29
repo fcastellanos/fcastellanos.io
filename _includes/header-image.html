@@ -2,7 +2,7 @@
 {% if post.header_card %}
 <picture>
   <source srcset="{{ post.header_card.dark | relative_url }}" media="(prefers-color-scheme: dark)">
-  <img src="{{ post.header_card.light | relative_url }}" alt="" width="1200" height="630"{% if include.lazy %} loading="lazy"{% endif %}>
+  <img src="{{ post.header_card.light | relative_url }}" alt="{{ post.image_alt | escape }}" width="1200" height="630"{% if include.lazy %} loading="lazy"{% endif %}>
 </picture>
 {% else %}
 <img src="{{ post.image.path | default: post.image | relative_url }}" alt="{{ post.image_alt | escape }}"{% if include.lazy %} loading="lazy"{% endif %}>
