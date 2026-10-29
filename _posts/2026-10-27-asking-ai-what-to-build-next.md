@@ -2,6 +2,9 @@
 title: "Asking an AI What to Build Next"
 date: 2026-10-27T14:00:00-07:00
 tags: [ai, claude, product, rails]
+image: /assets/img/asking-ai-what-to-build-next/cover-light.png
+image_dark: /assets/img/asking-ai-what-to-build-next/cover-dark.png
+image_alt: "A one-line feature question, the schema, routes, controllers, jobs, Gemfile and 91 issues Claude read first, and its top three ideas: roll-over filed, CFDI still an idea, audit trail shipped in 9 days"
 ---
 
 Ask an AI "what features should I add?" and you usually get a list that could fit any app: dark mode, a mobile app, AI-powered insights. I asked Claude that question about my school administration platform, and the answer was useful for once. One of its ideas shipped nine days later. The difference was what it read before answering.

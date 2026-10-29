@@ -2,6 +2,9 @@
 title: "Handing Dependabot to an Agent, and the PR It Rightly Refused"
 date: 2026-10-28T14:00:00-07:00
 tags: [ai, claude, dependabot, rails]
+image: /assets/img/handing-dependabot-to-an-agent/cover-light.png
+image_dark: /assets/img/handing-dependabot-to-an-agent/cover-dark.png
+image_alt: "Six Dependabot PRs pass through the /maintain-dependabot-prs skill: four merge, one is rerun once, and the json 3.0 bump is closed"
 ---
 
 Dependabot is great at opening pull requests and terrible at telling you which ones matter. On my side project, a Rails app I build outside my day job, it opens a handful every week. I used to click through them one by one. Now I type `/maintain-dependabot-prs` in the Claude panel in VS Code and read a table. This post is about that skill, the day it hit 337 failing tests, and the PR it closed instead of fixing.

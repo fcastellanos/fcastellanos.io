@@ -3,6 +3,8 @@
 {% assign excerpt_words = include.words | default: 28 %}
 <article class="card{% if include.featured %} card-featured{% endif %}">
   <a class="card-link" href="{{ post.url | relative_url }}" aria-label="{{ post.title | escape }}"></a>
+  <div class="card-cover">{% include header-image.html post=post lazy=true %}</div>
+  <div class="card-body">
   {% if include.featured %}<span class="eyebrow">Latest post</span>{% endif %}
   <h3>{{ post.title }}</h3>
   <p class="excerpt">{{ post.excerpt | strip_html | normalize_whitespace | truncatewords: excerpt_words }}</p>
@@ -15,4 +17,5 @@
     {% for tag in post.tags limit: 3 %}<span class="pill">{{ tag }}</span>{% endfor %}
   </div>
   {% endif %}
+  </div>
 </article>

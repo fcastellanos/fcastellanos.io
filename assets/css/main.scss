@@ -118,28 +118,38 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -.02em; }
 
 /* Cards */
 .card {
-  position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 1rem;
-  padding: 1.4rem 1.5rem; box-shadow: var(--shadow); transition: transform .15s ease, border-color .15s ease;
+  position: relative; display: flex; flex-direction: column; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 1rem;
+  box-shadow: var(--shadow); transition: transform .15s ease, border-color .15s ease;
 }
+.card-body { padding: 1.2rem 1.5rem 1.4rem; }
+.card-cover { aspect-ratio: 1200 / 630; border-bottom: 1px solid var(--border); background: var(--code-bg); }
+.card-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .card:hover { transform: translateY(-2px); border-color: var(--accent); }
 .card-link { position: absolute; inset: 0; border-radius: inherit; z-index: 1; }
 .card h3 { font-size: 1.2rem; margin: .2rem 0 .5rem; }
 .card .excerpt { color: var(--muted); margin: 0; font-size: .97rem; }
 .card-meta { color: var(--muted); font-size: .85rem; margin-top: .9rem; }
 .card-featured {
-  padding: 2rem 2.25rem; margin-bottom: 3rem;
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; margin-bottom: 3rem;
   background:
     linear-gradient(var(--surface), var(--surface)) padding-box,
     linear-gradient(135deg, var(--accent), var(--accent-2)) border-box;
   border: 1.5px solid transparent;
 }
+.card-featured .card-cover { margin: 1.5rem 0 1.5rem 1.5rem; border: 1px solid var(--border); border-radius: .75rem; overflow: hidden; }
+.card-featured .card-body { padding: 2rem 2.25rem; }
 .card-featured h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 .card-featured .excerpt { font-size: 1.05rem; max-width: 46rem; }
 .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.25rem; }
 .section-head h2 { margin: 0; font-size: 1.4rem; }
 .section-head a { font-weight: 600; font-size: .95rem; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr)); gap: 1.25rem; }
-@media (max-width: 520px) { .grid { grid-template-columns: 1fr; } .card-featured { padding: 1.5rem; } }
+@media (max-width: 760px) {
+  .card-featured { display: flex; }
+  .card-featured .card-cover { margin: 0; border: 0; border-bottom: 1px solid var(--border); border-radius: 0; }
+}
+@media (max-width: 520px) { .grid { grid-template-columns: 1fr; } .card-featured .card-body { padding: 1.5rem; } }
 
 /* Lists (archive, tags) */
 .post-list { list-style: none; padding: 0; }
@@ -153,6 +163,8 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -.02em; }
 .meta { color: var(--muted); margin: .25rem 0; font-size: .95rem; }
 .post header { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
 .post header .pills { margin-top: .75rem; }
+.post-cover { margin: 0 0 2rem; }
+.post-cover img { display: block; width: 100%; height: auto; border-radius: 1rem; border: 1px solid var(--border); box-shadow: var(--shadow); }
 .post h2 { margin-top: 2.5rem; }
 .post-nav { display: flex; justify-content: space-between; gap: 1rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-weight: 500; }
 

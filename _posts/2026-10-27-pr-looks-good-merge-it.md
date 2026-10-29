@@ -2,6 +2,9 @@
 title: "\"PR Looks Good, Merge It\": Reviewing Code I Didn't Type"
 date: 2026-10-27T08:00:00-07:00
 tags: [ai, claude-code, code-review, workflow]
+image: /assets/img/pr-looks-good-merge-it/cover-light.png
+image_dark: /assets/img/pr-looks-good-merge-it/cover-dark.png
+image_alt: "A PR summary with a \"Notably\" note and test counts, four review questions, then \"PR looks good, merge it\" and a merge pinned to the reviewed commit"
 ---
 
 The message I send most often to Claude Code is five words long: "PR looks good, merge it." That sounds like rubber-stamping, but it's actually the end of a review. This post covers what happens before I type it, and what still happens after.
