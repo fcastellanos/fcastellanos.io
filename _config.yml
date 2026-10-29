@@ -8,7 +8,7 @@ timezone: America/Los_Angeles
 author:
   name: Fernando Castellanos
   github: fcastellanos
-  twitter: fcastellanos
+  linkedin: fcastellanos
 
 # Keeps the same URLs the old Hugo site used: /2020/11/23/configure-sidekiq-with-rails/
 permalink: /:year/:month/:day/:title/
