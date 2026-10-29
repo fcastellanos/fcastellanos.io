@@ -52,6 +52,9 @@ feat: discovery tracking with live progress bars (US6)
 
 The pull request was merged at 9:13 that night. That's not because the agent is fast at typing. It's because every decision had been made in the documents first, so implementation was mostly executing a plan that had already been checked.
 
+![The Pokopia map: rounded areas like Palette Town, Rocky Ridges and Bubbly Basin, with a list of areas beside it](/assets/img/posts/pokipedia/map.png)
+*The interactive map from user story 4. Picking an area shows which Pokémon can appear there and what attracts them.*
+
 The task list also had a checkpoint after the first two stories, the MVP, and it found real problems. Expandable badges were 32px tall, under the 44px minimum. At 320px wide, the header's search box pushed its button off the screen. A few of the dataset's descriptions had typos. All of that was fixed before moving on.
 
 ## When the spec itself is wrong
