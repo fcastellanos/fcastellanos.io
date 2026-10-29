@@ -3,6 +3,7 @@ layout: default
 ---
 <article class="post">
   <header>
+    <figure class="post-cover">{% include header-image.html post=page %}</figure>
     <h1>{{ page.title }}</h1>
     {% assign words = content | number_of_words %}
     <p class="meta">

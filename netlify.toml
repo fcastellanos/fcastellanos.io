@@ -1,8 +1,9 @@
 # Netlify builds and hosts the site (production and PR deploy previews).
 [build]
 publish = "_site"
-command = "bundle exec jekyll build"
+command = "npm run cards && bundle exec jekyll build"
 
 [build.environment]
 RUBY_VERSION = "3.3.6"
+NODE_VERSION = "22"
 JEKYLL_ENV = "production"

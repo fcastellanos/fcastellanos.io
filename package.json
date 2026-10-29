@@ -1,0 +1,15 @@
+{
+  "name": "fcastellanos.io",
+  "private": true,
+  "type": "module",
+  "description": "Build helpers for the Jekyll site: generates the branded title cards used as post header images.",
+  "scripts": {
+    "cards": "node scripts/generate-cards.mjs"
+  },
+  "dependencies": {
+    "@fontsource/inter": "5.2.8",
+    "@resvg/resvg-js": "2.6.2",
+    "satori": "0.33.5",
+    "yaml": "2.9.1"
+  }
+}
