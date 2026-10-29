@@ -51,3 +51,55 @@ export const canvas = (t, style, children) =>
       h({ position: "absolute", left: 0, right: 0, bottom: 0, height: 14, backgroundImage: `linear-gradient(90deg, ${t.accent}, ${t.accent2})` }),
     ],
   );
+
+// Building blocks for the diagrams in scripts/covers/.
+export const mono = (style, text) => h({ fontFamily: "JetBrains Mono", fontWeight: 500, ...style }, text);
+
+export const label = (t, text, style) =>
+  h({ fontSize: 15, fontWeight: 600, letterSpacing: "0.12em", color: t.muted, marginBottom: 14, ...style }, text);
+
+export const dot = (color, size = 12) => h({ width: size, height: size, borderRadius: 999, backgroundColor: color, flexShrink: 0 });
+
+export const row = (t, children, highlight) =>
+  h(
+    {
+      alignItems: "center", justifyContent: "space-between", gap: 10, height: 46, padding: "0 14px", marginBottom: 10,
+      backgroundColor: t.surface, borderRadius: 10, border: `1.5px solid ${highlight ? t[highlight] : t.border}`,
+    },
+    children,
+  );
+
+export const badge = (t, text, color) =>
+  h({ flexShrink: 0, whiteSpace: "nowrap", padding: "3px 10px", borderRadius: 999, backgroundColor: color === "muted" ? t.pill : `${t[color]}22`, color: color === "muted" ? t.muted : t[color], fontSize: 15, fontWeight: 600 }, text);
+
+const svg = (markup, width, height) => ({
+  type: "img",
+  props: { src: `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">${markup}</svg>`)}`, width, height },
+});
+
+export const arrow = (t, length = 44) =>
+  h({ width: length + 12, justifyContent: "center", alignSelf: "center", flexShrink: 0 }, [
+    svg(`<path d="M2 10h${length - 6}M${length - 14} 3l8 7-8 7" fill="none" stroke="${t.accent}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`, length, 20),
+  ]);
+
+export const check = (color, size = 20) =>
+  svg(`<circle cx="10" cy="10" r="10" fill="${color}" opacity=".18"/><path d="M5.5 10.5l3 3 6-7" fill="none" stroke="${color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`, size, size);
+
+// A gradient-bordered box, used for the agent/skill in the middle of a diagram.
+export const glowBox = (t, style, children) =>
+  h({ padding: 2, borderRadius: 18, backgroundImage: `linear-gradient(135deg, ${t.accent}, ${t.accent2})`, ...style }, [
+    h({ flex: 1, flexDirection: "column", gap: 14, padding: "22px 22px 24px", borderRadius: 16, backgroundColor: t.surface }, children),
+  ]);
+
+// A chat bubble; `mine` uses the accent gradient like a sent message.
+export const bubble = (t, text, { mine = false, style = {} } = {}) =>
+  h(
+    {
+      padding: "16px 20px", borderRadius: 18, fontSize: 20, fontWeight: 500, lineHeight: 1.4,
+      ...(mine
+        ? { backgroundImage: `linear-gradient(135deg, ${t.accent}, ${t.accent2})`, color: "#fff", borderBottomRightRadius: 4 }
+        : { backgroundColor: t.surface, border: `1.5px solid ${t.border}`, color: t.fg, borderBottomLeftRadius: 4 }),
+      ...style,
+    },
+    text,
+  );

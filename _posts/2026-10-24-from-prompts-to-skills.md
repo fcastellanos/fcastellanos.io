@@ -2,6 +2,9 @@
 title: "From Prompts to Skills: How I Taught Claude Code My Workflow"
 date: 2026-10-24T09:00:00-07:00
 tags: [ai, claude-code, workflow, github]
+image: /assets/img/from-prompts-to-skills/cover-light.png
+image_dark: /assets/img/from-prompts-to-skills/cover-dark.png
+image_alt: "A long prompt retyped every session becomes \"work on 131\", backed by create-ticket, check-ticket and work-ticket skills that hand off from one sentence to a PR"
 ---
 
 For months I used Claude Code the way most people do: open a session, explain what I wanted, watch it work, correct it, and explain the same things again the next day. Then I turned that repeated explaining into a few small Markdown files called skills. Now "work on 131" is a complete instruction, and this post is about how I got there.

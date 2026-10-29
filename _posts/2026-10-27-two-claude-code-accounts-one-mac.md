@@ -2,6 +2,9 @@
 title: "Work and Personal Claude Accounts in VS Code"
 date: 2026-10-27T10:00:00-07:00
 tags: [ai, claude, macos, vscode]
+image: /assets/img/two-claude-code-accounts-one-mac/cover-light.png
+image_dark: /assets/img/two-claude-code-accounts-one-mac/cover-dark.png
+image_alt: "Two VS Code windows opened with code-personal and code-work, each with its own CLAUDE_CONFIG_DIR and Claude account, plus a LaunchAgent default for the Dock"
 ---
 
 I use Claude for two kinds of coding: my day job, on my employer's team plan, and a school administration platform I build as a side project, on my own personal plan. Both happen on the same Mac, and almost all of it happens in the Claude extension in VS Code. One day I asked Claude in my side project, "what Claude account am I using?", and it answered with my work account. Here's how I got VS Code to use the right account for each, and the two surprises along the way.
