@@ -6,6 +6,8 @@ tags: [ai, claude, spec-kit, rust]
 
 My earlier posts in this series were about a long-running project, with a board, tickets and a workflow that grew over months. This one is about a project that started from nothing on a Saturday afternoon. It's an unofficial fan site for Pokémon Pokopia, which I called Pokipedia. Over four days it got three features: a Pokémon directory with a map and accounts, a "Habitat Dex," and original artwork for all 254 habitats. Each one went through GitHub's Spec Kit before any code was written. This post covers what that looked like, and what the specs caught.
 
+Part of why I tried it was DHH's opening keynote at Rails World 2026, which was about agentic coding. He said 37signals has gone "pencils down": agents write the code by default, and writing it by hand is now the exception. He also said they're using Rust for new backend work, because when you're not the one reading and writing the code every day, the language doesn't have to be the one that's nicest for a human to write. I've written Ruby for years and hardly any Rust, so a Rust side project felt like the right way to find out whether that holds up.
+
 ## The project
 
 Pokipedia is a searchable directory of every Pokémon in Pokopia. It has profile pages with their in-game details and where to find them, an interactive map, and accounts for tracking the Pokémon you've discovered. It's built with [Loco](https://loco.rs), a Rails-like framework for Rust, with server-rendered templates and PostgreSQL. Every page works without JavaScript, and it ships as a single Docker container.
